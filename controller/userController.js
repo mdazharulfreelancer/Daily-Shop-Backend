@@ -45,7 +45,7 @@ exports.RegesterUser = cashAsyncError(async(req, res, next) =>{
     const otp = generateOTP();
        // Send OTP to the user
     sendOTP(email, otp);
-    console.log(email)
+    // console.log(email)
     // Send response to the user      
         const user = new User({
             name,
@@ -89,8 +89,8 @@ async  function sendOTP(email, otp) {
  exports.verify = cashAsyncError(async (req, res) => {
     const emailOTP = req.body.emailOTP;
     const email = req.body.email;
-    console.log(email)
-    console.log(emailOTP)
+    // console.log(email)
+    // console.log(emailOTP)
 
     try {
    const user = await User.findOne({email, emailOTP ,
