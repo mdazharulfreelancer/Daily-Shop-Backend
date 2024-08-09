@@ -10,9 +10,6 @@ const bcrypt = require("bcryptjs");
 
 
 // tiwilio
-const accountSid = "AC59cc0cb55f5c625729edf0278410a07a";
-const authToken = '094396964fd461f033473de6c59c16dc';
-const client = require("twilio")(accountSid, authToken);
 
 
 // Dummy user database (replace this with a real database)
