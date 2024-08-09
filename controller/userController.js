@@ -64,14 +64,14 @@ async  function sendOTP(email, otp) {
     const transporter = nodeMailer.createTransport({ 
          service: 'gmail',
          auth: {
-           user: 'mdajharul869@gmail.com',
-           pass: process.env.PORT
+           user: process.env.user_auth_user,
+           pass: process.env.user_auth_pass
         }
     })
 
     const mailOptions = {
-        from: 'mdajharul869@gmail.com',
-        to :email,
+        from: process.env.email_my,
+        to : email,
         subject: `DailyShop Account Verification Code`,
         text: `This is Your DailyShop Account virification Otp 
         ${otp}`
