@@ -7,8 +7,11 @@ const app = express();
 const nodeMailer = require("nodemailer")
 const  jwt  = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const dotenv = require("dotenv")
 
 
+
+dotenv.config({path:"./config/config.env"})
 // tiwilio
 
 
@@ -65,7 +68,7 @@ async  function sendOTP(email, otp) {
          service: 'gmail',
          auth: {
            user: 'mdajharul869@gmail.com',
-           pass: 'nwudjltgznmqwmop'
+           pass: process.env.PORT
         }
     })
 
