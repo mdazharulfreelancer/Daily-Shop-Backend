@@ -12,14 +12,11 @@ const dotenv = require("dotenv")
 
 
 dotenv.config({path:"./config/config.env"})
-// tiwilio
-
 
 // Dummy user database (replace this with a real database)
 
 function generateOTP() {
     // Logic to generate a random OTP (e.g., 6-digit number)
-  //tawlio sms
     let digits = '0123456789';
     let OTP = '';
     for (let i = 0; i < 4; i++ ) {
