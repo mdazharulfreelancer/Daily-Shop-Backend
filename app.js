@@ -17,14 +17,16 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static("public"))
-app.use(cors(
 
- {   origin: ['https://daily-shop-azharul.vercel.app'],// Replace with the origin you want to allow
-     methods: ['POST','DELETE','GET','PUT','UPDATE'],       // Allow only POST and DELETE methods
-     credentials: true   
- }
-))
+app.use(cors({
+  origin: 'https://daily-shop-azharul.vercel.app', // Allow only this origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
+}));
 
+app.get('/api/v1/flash-sales/10', (req, res) => {
+  res.send('Flash sale data');
+});
 
 //server any error handler message devolper
 app.use(errorHandler)
