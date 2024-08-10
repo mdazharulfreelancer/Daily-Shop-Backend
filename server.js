@@ -24,9 +24,12 @@ cloudinary.config({
     api_key: '349718663461614',
     api_secret: 'L2T3hMpJNGFmPK8UysYBNrELsSM',
   });
-  
+  // Define a route
+app.get('/', (req, res) => {
+    res.send('Hello, world!');
+  });
 //server running 
- const server =  app.listen(process.env.PORT, () =>{
+ const server =  app.listen(process.env.PORT, (req, res) =>{
     console.log(`server is running on  http://192.168.1.103:${process.env.PORT} `)
 })
 
