@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static("public"))
 app.use(cors(
 
- {   origin: ['https://daily-shop-azharul.vercel.app/'],// Replace with the origin you want to allow
+ {   origin: ['https://daily-shop-azharul.vercel.app'],// Replace with the origin you want to allow
      methods: ['POST','DELETE','GET','PUT','UPDATE'],       // Allow only POST and DELETE methods
      allowedHeaders: 'Content-Type,Authorization', // Specify headers that are allowed
      credentials: true   
