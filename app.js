@@ -18,6 +18,7 @@ app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static("public"))
 app.use(cors(
+
  {   origin: ['http://192.168.1.106:5173/'],// Replace with the origin you want to allow
      methods: ['POST','DELETE','GET','PUT','UPDATE'],       // Allow only POST and DELETE methods
      allowedHeaders: 'Content-Type,Authorization', // Specify headers that are allowed
