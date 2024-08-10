@@ -2,7 +2,7 @@
   "name": "dailyshop",
   "version": "1.0.0",
   "description": "this is damo app like dailyshop this app useing node js react vite",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
