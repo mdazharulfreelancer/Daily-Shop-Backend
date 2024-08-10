@@ -168,7 +168,7 @@ exports.getAllProductHomePageJustForYou = cashAsyncError(async(req, res, next) =
   // home page for---------------------------------
   exports.getAllProductHomePageJusForYouPhoneLeft = cashAsyncError(async(req,res, next) =>{ 
       const countProduct = await Product.countDocuments()
-      const resultpage = 2
+      const resultpage = 12
       const pagecountproduct = Math.floor(countProduct / resultpage)
     //  console.log(pagecountproduct)
       const apifeature = new ApiFeature(Product.find(), req.query).filter().search()
@@ -194,7 +194,7 @@ exports.getAllProductHomePageJustForYou = cashAsyncError(async(req, res, next) =
   //New PRoduct page for----------------------------------------
   exports.getNewProductPhone = cashAsyncError(async(req, res , next)=>{ 
     const countProduct = await Product.countDocuments()
-    const resultpage = 4
+    const resultpage = 10
     const pagecountproduct = Math.floor(countProduct / resultpage)
     const apifeature = new ApiFeature(Product.find(), req.query).filter()
     apifeature.paginationProduct(resultpage )
