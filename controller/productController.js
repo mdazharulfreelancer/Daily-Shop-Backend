@@ -168,7 +168,7 @@ exports.getAllProductHomePageJustForYou = cashAsyncError(async(req, res, next) =
   // home page for---------------------------------
   exports.getAllProductHomePageJusForYouPhoneLeft = cashAsyncError(async(req,res, next) =>{ 
       const countProduct = await Product.countDocuments()
-      const resultpage = 2
+      const resultpage = 10
       const pagecountproduct = Math.floor(countProduct / resultpage)
     //  console.log(pagecountproduct)
       const apifeature = new ApiFeature(Product.find(), req.query).filter().search()
@@ -194,7 +194,7 @@ exports.getAllProductHomePageJustForYou = cashAsyncError(async(req, res, next) =
   //New PRoduct page for----------------------------------------
   exports.getNewProductPhone = cashAsyncError(async(req, res , next)=>{ 
     const countProduct = await Product.countDocuments()
-    const resultpage = 4
+    const resultpage = 10
     const pagecountproduct = Math.floor(countProduct / resultpage)
     const apifeature = new ApiFeature(Product.find(), req.query).filter()
     apifeature.paginationProduct(resultpage )
@@ -218,7 +218,7 @@ exports.getAllProductHomePageJustForYou = cashAsyncError(async(req, res, next) =
   //Everuujday low price --------------------------------------
   exports.getAllProductLowPricePhone = cashAsyncError(async(req, res , next)=>{ 
       const countProduct = await Product.countDocuments()
-      const resultpage = 4
+      const resultpage = 12
       const countlowPrice = await Product.find().sort({currentprice: 1, date:-1}).exec()
       const lastresultcountlowPrice = getlast5daysproducts(countlowPrice)
       const reslutLowPriceLength = lastresultcountlowPrice.length
@@ -259,7 +259,7 @@ exports.getAllProductHomePageJustForYou = cashAsyncError(async(req, res, next) =
   exports.getFreeDeProductPhone = cashAsyncError(async(req, res , next)=>{ 
     const countFreeDalivay = await Product.find({freedalivary :'yes'})
     const countProduct = countFreeDalivay.length
-    const resultpage = 4
+    const resultpage = 8
     const pagecountproduct = Math.floor(countProduct / resultpage)
     const apifeature = new ApiFeature(Product.find({freedalivary :'yes'}), req.query).filter()
     apifeature.paginationProduct(resultpage )
@@ -278,6 +278,32 @@ exports.getAllProductHomePageJustForYou = cashAsyncError(async(req, res, next) =
     })
 
   })
+
+  //get product category page
+
+  exports.getCategoryProductPhone = cashAsyncError(async(req, res, next) =>{
+
+    const countFreeDalivay = await Product.find({category :'Shirt'})
+    const countProduct = countFreeDalivay.length
+    const resultpage = 10
+    const pagecountproduct = Math.floor(countProduct / resultpage)
+    const apifeature = new ApiFeature(Product.find({category :'Shirt'}), req.query).filter()
+    apifeature.paginationProduct(resultpage )
+
+    const productsArray = await apifeature.query.sort({ date: -1 }).exec();
+    let filteredProductsCountJustforYou = productsArray.length;
+    
+    const categoryroducts  = getRandomProducts(filteredProductsCountJustforYou, filteredProductsCountJustforYou, productsArray)
+    res.status(200).json({
+        success: true, 
+        categoryroducts,
+        filteredProductsCountJustforYou,
+        countProduct,
+        pagecountproduct,
+        resultpage
+    })
+    
+  })
   
 
 // This is for phone   only -------------------------------------------------
@@ -287,7 +313,8 @@ exports.getAllProductHomePageJusForYouPc = cashAsyncError(async(req,res, next) =
       const countProduct = await Product.countDocuments()
       const resultpage = 12
       const pagecountproduct = Math.floor(countProduct / resultpage)
-    //  console.log(pagecountproduct)
+
+  
       const apifeature = new ApiFeature(Product.find(), req.query).filter().search()
       apifeature.paginationProduct(resultpage)
 
@@ -302,11 +329,59 @@ exports.getAllProductHomePageJusForYouPc = cashAsyncError(async(req,res, next) =
           filteredProductsCountJustforYou,
           countProduct,
           resultpage,
-          pagecountproduct
+          pagecountproduct,
   
       })
   })
 
+  //New PRoduct page for----------------------------------------
+  exports.getNewProductPC = cashAsyncError(async(req, res , next)=>{ 
+    const countProduct = await Product.countDocuments()
+    const resultpage = 12
+    const pagecountproduct = Math.floor(countProduct / resultpage)
+    const apifeature = new ApiFeature(Product.find(), req.query).filter()
+    apifeature.paginationProduct(resultpage )
+
+    const productsArray = await apifeature.query.sort({ date: -1 }).exec();
+    let filteredProductsCountJustforYou = productsArray.length;
+    
+    const newproducts  = getRandomProducts(filteredProductsCountJustforYou, filteredProductsCountJustforYou, productsArray)
+    res.status(200).json({
+        success: true, 
+        newproducts,
+        filteredProductsCountJustforYou,
+        countProduct,
+        pagecountproduct,
+        resultpage
+    })
+
+  })
+  //New PRoduct page for----------------------------------------
+
+  //category page
+  exports.getCategoryProductPC = cashAsyncError(async(req, res, next) =>{
+    const countFreeDalivay = await Product.find({category :'Shirt'})
+    const countProduct = countFreeDalivay.length
+    const resultpage = 28
+    const pagecountproduct = Math.floor(countProduct / resultpage)
+    const apifeature = new ApiFeature(Product.find({category :'Shirt'}), req.query).filter()
+    apifeature.paginationProduct(resultpage )
+
+    const productsArray = await apifeature.query.sort({ date: -1 }).exec();
+    let filteredProductsCountJustforYou = productsArray.length;
+    
+    const categoryroductpc  = getRandomProducts(filteredProductsCountJustforYou, filteredProductsCountJustforYou, productsArray)
+    res.status(200).json({
+        success: true, 
+        categoryroductpc,
+        filteredProductsCountJustforYou,
+        countProduct,
+        pagecountproduct,
+        resultpage
+    })
+    
+  })
+  //category page
 //search prdocuts page 
 exports.getAllProductSearchPagePC = cashAsyncError(async(req,res,next) =>{
   const countProduct =  await Product.find().countDocuments()

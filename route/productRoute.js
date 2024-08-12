@@ -1,6 +1,6 @@
 // internal all require File
 const express = require("express")
-const {createproduct, uploadimage, getAllProductHomePageJustForYou, getAllProductHomeLatestProduct, getAllRecomandedProduct, getAllCategoryProduct, getAllSubCategoryProduct, getAllSpicialProduct, getAllSpicialCategoryTopProduct, getProductDitalsById, getAllProductAdmin, productDeleteAdmin, getProductDitalsByIdName, productUpdateAdmin, getAllProductHomePageJusForYouPhoneRight, getAllProductHomePageJusForYouPhoneLeft, getAllProductFlashSalePc, getAllProductFlashSalePhone, getTodayProducts, getAllProductFlashSalePcPageSecend, getNewProduct, getNewProductRight, getAllProductLowPrice, getAllProductLowPriceRight, getNewProductPhone, getAllProductLowPricePhone, getFreeDeProductPhone, getAllProductHomePageJusForYouPc, getAllProductSearchPagePC} = require("../controller/productController")
+const {createproduct, uploadimage, getAllProductHomePageJustForYou, getAllProductHomeLatestProduct, getAllRecomandedProduct, getAllCategoryProduct, getAllSubCategoryProduct, getAllSpicialProduct, getAllSpicialCategoryTopProduct, getProductDitalsById, getAllProductAdmin, productDeleteAdmin, getProductDitalsByIdName, productUpdateAdmin, getAllProductHomePageJusForYouPhoneRight, getAllProductHomePageJusForYouPhoneLeft, getAllProductFlashSalePc, getAllProductFlashSalePhone, getTodayProducts, getAllProductFlashSalePcPageSecend, getNewProduct, getNewProductRight, getAllProductLowPrice, getAllProductLowPriceRight, getNewProductPhone, getAllProductLowPricePhone, getFreeDeProductPhone, getAllProductHomePageJusForYouPc, getAllProductSearchPagePC, getNewProductPC, getCategoryProductPhone, getCategoryProductPC} = require("../controller/productController")
 const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const multer = require("multer");
@@ -49,11 +49,15 @@ router.route('/get-all-product-just-for-you-phone-left').get(getAllProductHomePa
 router.route('/new-product-phone').get(getNewProductPhone);
 router.route('/low-price-products-phone').get(getAllProductLowPricePhone)
 router.route('/freedalivary-product-phone').get(getFreeDeProductPhone)
+router.get('/category-products', getCategoryProductPhone)
 //phone for product route-----------------------------
+
+
 //Pcccccccc for product route-----------------------------
 router.route("/home-just-for-products-pc").get(getAllProductHomePageJusForYouPc)
 router.get("/search-productpc", getAllProductSearchPagePC)
-
+router.get('/get-new-product-pc' , getNewProductPC)
+router.get('/get-category-product-pc' , getCategoryProductPC)
 //Pcccccccc for product route-----------------------------
 router.route('/get-all-product-just-for-you-phone-right').get(getAllProductHomePageJusForYouPhoneRight)
 router.route('/flash-sale/:resultpage').get(getAllProductFlashSalePc);

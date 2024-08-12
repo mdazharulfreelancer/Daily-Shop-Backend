@@ -45,19 +45,24 @@ class ApiFeature {
       
       paginationHomeJustForYouPhoneLeft (resultpage ){
         const currentpage = Number(this.value.page) || 1
-    //   console.log(currentpage)
+    //     console.log(currentpage)
         const skip =  resultpage * (currentpage -1)
         this.query = this.query.limit(resultpage).skip(skip)
         return this
       }
 
+      //THis is correct useing all so this is clean code
       paginationProduct (resultpage ){
         const currentpage = Number(this.value.page) || 1
-    //   console.log(currentpage)
+   // console.log(currentpage)
         const skip =  resultpage * (currentpage -1)
         this.query = this.query.limit(resultpage).skip(skip)
         return this
       }
+
+
+      //THis is correct useing all so this is clean code
+
       paginationHomeJustForYouPhoneRight (resultpage){
         const currentpage = Number(this.value.page) || 1
         const skip =  resultpage * (currentpage -1) 
