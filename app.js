@@ -27,7 +27,7 @@ app.use(cors({
 
 
 app.get('/', (req, res) => {
-  res.send('Server Running');
+  res.send('Server Running hello');
 });
 
 //server any error handler message devolper
