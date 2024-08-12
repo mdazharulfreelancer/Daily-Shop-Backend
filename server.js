@@ -26,7 +26,7 @@ cloudinary.config({
   });
   // Define a route
 app.get('/', (req, res) => {
-    res.send('Hello, world!');
+    res.send(`Hello, world! ${process.env.PORT}`);
   });
 //server running 
  const server =  app.listen(process.env.PORT, (req, res) =>{
